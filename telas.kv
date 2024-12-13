@@ -1,0 +1,870 @@
+ScreenManager:
+    id: screen_manager
+    Login:
+        name:'login'
+        id: login
+    Register:
+        name:'register'
+        id: register
+    Inicio:
+        name: 'inicio'
+        id: inicio
+    Voz:
+        name: 'voz'
+        id: voz
+    Associacao:
+        name: 'associacao'
+        id: associacao
+    Associacao_jogo:
+        name: 'asso_jogo'
+        id: asso_jogo
+    Emocoes:
+        name: 'emocoes'
+        id: emocoes
+    Coordenacao_motora:
+        name: 'cord_moto'
+        id: cord_moto
+
+<Login>:
+    canvas.before:
+        Color:
+            rgba: 0.678, 0.847, 1, 1  # Azul claro
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    Image:
+        source: '.\imagens\logo.png'
+        pos_hint: {'center_x': .5, 'center_y': .75}
+        size_hint_x: .5
+
+    MDTextField:
+        id: user
+        hint_text: 'Usuario:'
+        foreground_color: 0, 1, 0, 1  # Verde
+        text_color_focus: "black"
+        line_color_focus: "black"
+        hint_text_color_focus: "black"
+        icon_left_color_normal: "black"
+        icon_left_color_focus: "black"
+        font_name: "./fonts/Parkinsans-Regular.ttf"
+        pos_hint: {'center_x': .5, 'center_y': .6}
+        font_name_hint_text: "./fonts/Parkinsans-Regular.ttf"
+        size_hint_x: 0.7
+        icon_left: "account"
+        multiline: False
+
+    MDTextField:
+        id: password
+        hint_text: 'Senha:'
+        line_color_focus: "black"
+        text_color_focus: "black"
+        hint_text_color_focus: "black"
+        icon_left_color_normal: "black"
+        icon_left_color_focus: "black"
+        font_name: "./fonts/Parkinsans-Regular.ttf"
+        font_name_hint_text: "./fonts/Parkinsans-Regular.ttf"
+        pos_hint: {'center_x': .5, 'center_y': .49}
+        size_hint_x: 0.7
+        icon_left: "key-variant"
+        password: True
+        multiline: False
+
+    MDRaisedButton:
+        id: entra
+        text: 'Entrar'
+        font_name: "./fonts/Parkinsans-Medium.ttf"
+        pos_hint: {'center_x': .5, 'center_y': .375}
+        size_hint_x: 0.7
+        size_hint_y: .08
+        elevation: 0
+        on_press: root.logar()
+        md_bg_color: 0.027, 0.263, 0.533, 1
+        text_color: 1, 1, 1, 1
+
+
+    MDTextButton:
+        text: 'Novo por aqui? Cadastre-se'
+        font_name: "./fonts/Parkinsans-Regular.ttf"
+        pos_hint: {'center_x': .5, 'center_y': .3}
+        size_hint_x: 0.7
+        theme_text_color: 'Custom'
+        text_color: 'black'
+        font_size: "14sp"
+        on_press: app.mudar_tela('register')
+
+<Register>:
+    canvas.before:
+        Color:
+            rgba: 0.678, 0.847, 1, 1  # Azul claro
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    Image:
+        source: '.\imagens\logo.png'
+        pos_hint: {'center_x': .5, 'center_y': .75}
+        size_hint_x: .5
+    MDIconButton:
+        on_press: app.mudar_tela('login')
+        icon: 'arrow-left'
+        icon_size: '32sp'
+        text: 'Sair'
+        theme_text_color: "Custom"
+        text_color: 'white'
+        pos_hint: {'center_x': .1, 'center_y': .95}
+    MDTextField:
+        id: new_user
+        hint_text: 'Usuario:'
+        foreground_color: 0, 1, 0, 1  # Verde
+        text_color_focus: "black"
+        line_color_focus: "black"
+        hint_text_color_focus: "black"
+        icon_left_color_normal: "black"
+        icon_left_color_focus: "black"
+        font_name: "./fonts/Parkinsans-Regular.ttf"
+        pos_hint: {'center_x': .5, 'center_y': .6}
+        font_name_hint_text: "./fonts/Parkinsans-Regular.ttf"
+        size_hint_x: 0.7
+        icon_left: "account"
+        multiline: False
+
+    MDTextField:
+        id: new_password
+        hint_text: 'Senha:'
+        line_color_focus: "black"
+        text_color_focus: "black"
+        hint_text_color_focus: "black"
+        icon_left_color_normal: "black"
+        icon_left_color_focus: "black"
+        font_name: "./fonts/Parkinsans-Regular.ttf"
+        font_name_hint_text: "./fonts/Parkinsans-Regular.ttf"
+        pos_hint: {'center_x': .5, 'center_y': .49}
+        size_hint_x: 0.7
+        icon_left: "key-variant"
+        password: True
+        multiline: False
+
+    MDTextField:
+        id: confirm_password
+        hint_text: 'Confirme a senha:'
+        line_color_focus: "black"
+        text_color_focus: "black"
+        hint_text_color_focus: "black"
+        icon_left_color_normal: "black"
+        icon_left_color_focus: "black"
+        font_name: "./fonts/Parkinsans-Regular.ttf"
+        font_name_hint_text: "./fonts/Parkinsans-Regular.ttf"
+        pos_hint: {'center_x': .5, 'center_y': .39}
+        size_hint_x: 0.7
+        icon_left: "key-variant"
+        password: True
+        multiline: False
+
+    MDRaisedButton:
+        id: registra
+        text: 'Registrar'
+        font_name: "./fonts/Parkinsans-Medium.ttf"
+        pos_hint: {'center_x': .5, 'center_y': .275}
+        size_hint_x: 0.7
+        size_hint_y: .08
+        elevation: 0
+        on_press: root.registrar()
+        md_bg_color: 0.027, 0.263, 0.533, 1
+        text_color: 1, 1, 1, 1
+
+<Inicio>:
+    FloatLayout:
+
+        canvas.before:
+            Color:
+                rgba: 0.678, 0.847, 1, 1  # Azul claro
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        MDIconButton:
+            on_press: app.mudar_tela('login')
+            icon: 'logout'
+            icon_size: '32sp'
+            text: 'Sair'
+            theme_text_color: "Custom"
+            text_color: 'white'
+            pos_hint: {'center_x': .1, 'center_y': .95}
+        MDLabel:
+            text: "Sair"
+            theme_text_color: "Custom"
+            font_name: "./fonts/Parkinsans-Medium.ttf"
+            font_size: "14sp"
+            text_color: 'white'
+            halign: "center"
+            valign: "middle"
+            pos_hint: {'center_x': .09, 'center_y': .92}
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: "100dp"
+            spacing: '20dp'
+            pos_hint: {'center_x': .5, 'center_y': .85}
+            Image:
+                source: '.\imagens\logo.png'
+                size_hint: None, None
+                size: "150dp", "75dp"
+                pos_hint: {'center_x': .5}
+
+            MDLabel:
+                text: "Bem-vindo!"
+                theme_text_color: "Custom"
+                font_name: "./fonts/Parkinsans-Medium.ttf"
+                font_size: "24sp"
+                text_color: 0.027, 0.263, 0.533, 1
+                halign: "center"
+                valign: "middle"
+                pos_hint: {'center_x': .5}
+
+        MDGridLayout:
+            cols: 2
+            size_hint_y: .6
+            size_hint_x: .85
+            pos_hint: {'center_x': .5, 'center_y': .4}
+            padding:[dp(20), dp(20), dp(20), dp(35)]
+            spacing: dp(25)
+            MDCard:
+                size_hint: .2, .2
+                ripple_behavior: True
+                pos_hint: {"center_x": .5, "center_y": .5}
+                md_bg_color: 0.027, 0.263, 0.533, 1
+                elevation: 1
+                on_press: app.mudar_tela('associacao')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    Image:
+                        source: '.\imagens\cat.png'
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                        size_hint_x: .6
+                        size_hint_y: .6
+
+                    MDLabel:
+                        pos_hint: {'center_x': .5}
+                        text: "Conheça os animais"
+                        font_name: "./fonts/Parkinsans-Regular.ttf"
+                        font_size: "17sp"
+                        theme_text_color: "Custom"
+                        text_color: 'white'
+                        size_hint_x: 1
+                        size_hint_y: .4
+                        valign: "middle"
+                        halign: 'center'
+            MDCard:
+                size_hint: .2, .2
+                ripple_behavior: True
+                pos_hint: {"center_x": .5, "center_y": .5}
+                md_bg_color: 0.027, 0.263, 0.533, 1
+                elevation: 1
+                on_press: app.mudar_tela('voz')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    Image:
+                        source: '.\imagens\microphone.png'
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                        size_hint_x: .6
+                        size_hint_y: .6
+
+                    MDLabel:
+                        pos_hint: {'center_x': .5}
+                        text: "Desenvolva a comunicação"
+                        font_name: "./fonts/Parkinsans-Regular.ttf"
+                        font_size: "17sp"
+                        theme_text_color: "Custom"
+                        text_color: 'white'
+                        size_hint_x: 1
+                        size_hint_y: .4
+                        valign: "middle"  # Alinhando o texto no centro verticalmente
+                        halign: 'center'
+            MDCard:
+                size_hint: .2, .2
+                ripple_behavior: True
+                pos_hint: {"center_x": .5, "center_y": .5}
+                md_bg_color: 0.027, 0.263, 0.533, 1
+                elevation: 1
+                on_press: app.mudar_tela('cord_moto')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    Image:
+                        source: '.\imagens\circle.png'
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                        size_hint_x: .6
+                        size_hint_y: .6
+
+                    MDLabel:
+                        pos_hint: {'center_x': .5}
+                        text: "Melhore a coordenação"
+                        font_name: "./fonts/Parkinsans-Regular.ttf"  # Caminho para a fonte no projeto
+                        font_size: "17sp"
+                        theme_text_color: "Custom"
+                        text_color: 'white'
+                        size_hint_x: 1
+                        size_hint_y: .4
+                        valign: "middle"
+                        halign: 'center'
+            MDCard:
+                size_hint: .2, .2
+                ripple_behavior: True
+                pos_hint: {"center_x": .5, "center_y": .5}
+                md_bg_color: 0.027, 0.263, 0.533, 1
+                elevation: 1
+                on_press: app.mudar_tela('emocoes')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    Image:
+                        source: '.\imagens\happy.png'
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                        size_hint_x: .6
+                        size_hint_y: .6
+
+                    MDLabel:
+                        pos_hint: {'center_x': .5}
+                        text: "Descubra as emoções"
+                        font_name: "./fonts/Parkinsans-Regular.ttf"  # Caminho para a fonte no projeto
+                        font_size: "17sp"
+                        theme_text_color: "Custom"
+                        text_color: 'white'
+                        size_hint_x: 1
+                        size_hint_y: .4
+                        valign: "middle"
+                        halign: 'center'
+        MDBoxLayout:
+            size_hint_y: .10
+            MDLabel:
+
+
+<Voz>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: 0.678, 0.847, 1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        MDTopAppBar:
+            title: ""
+            left_action_items: [["arrow-left", lambda x: app.mudar_tela('inicio')]]
+            md_bg_color: 0.678, 0.847, 1, 1
+            elevation: 0
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: .5
+            Image:
+                source: '.\imagens\logo.png'
+                size_hint: None, None
+                size: "150dp", "75dp"
+                pos_hint: {'center_x': .5, 'center_y': 1}
+
+            MDFloatLayout:
+                spacing: '1dp'
+                padding: '10dp'
+                size_hint_y: None
+                height: "60dp"
+
+                MDIconButton:
+                    on_press: root.titulo('Desenvolva sua comunicação')
+                    icon: 'volume-high'
+                    size_hint: None, None
+                    icon_size: '32sp'
+                    theme_text_color: "Custom"
+                    text_color: 0.027, 0.263, 0.533, 1
+                    pos_hint: {'center_x': .22, 'center_y': .5}
+                MDLabel:
+                    size_hint_x: .8
+                    text: 'Desenvolva sua comunicação'
+                    font_name: "./fonts/Parkinsans-Medium.ttf"  # Caminho para a fonte no projeto
+                    font_size: "24sp"
+                    text_color: 0.027, 0.263, 0.533, 1
+                    theme_text_color: "Custom"
+                    halign: 'center'
+                    valign: 'middle'
+                    pos_hint: {'center_x': .55, 'center_y': .5}
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: .4
+            MDBoxLayout:
+                orientation: 'horizontal'
+                spacing: '1dp'
+                padding: '20dp'
+                size_hint_y: None
+                height: "50dp"
+                MDIconButton:
+                    on_press: root.ouvir()
+                    icon: 'volume-high'
+                    size_hint: None, None
+                    icon_size: '64sp'
+                    theme_text_color: "Custom"
+                    text_color: 0.027, 0.263, 0.533, 1
+
+                MDLabel:
+                    id: frases
+                    text: 'Estou me sentindo bem!'
+                    theme_text_color: "Custom"
+                    font_name: "./fonts/Parkinsans-Regular.ttf"
+                    font_size: "20sp"
+                    text_color: 0.027, 0.263, 0.533, 1
+                    valign: 'middle'
+                    halign: 'center'
+                    size_hint_y: 8
+
+        FloatLayout:
+            orientation: 'vertical'
+            FloatLayout:
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                MDIconButton:
+                    on_press: root.falar()
+                    icon: 'microphone'
+                    icon_size: '180sp'
+                    theme_text_color: "Custom"
+                    text_color: 0.027, 0.263, 0.533, 1
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    md_bg_color: '#73CCFF'
+                MDLabel:
+                    text: 'Pressione para falar'
+                    halign: 'center'
+                    theme_text_color: "Custom"
+                    font_name: "./fonts/Parkinsans-Regular.ttf"
+                    font_size: "20sp"
+                    text_color: 0.027, 0.263, 0.533, 1
+
+                    pos_hint: {'center_x': .5, 'center_y': .005}
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: .5
+<Associacao>:
+    MDBoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0.678, 0.847, 1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: ""
+            left_action_items: [["arrow-left", lambda x: app.mudar_tela('inicio')]]
+            md_bg_color: 0.678, 0.847, 1, 1
+            elevation: 0
+
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: .15
+            Image:
+                source: '.\imagens\logo.png'
+                size_hint: None, None
+                size: "150dp", "75dp"
+                pos_hint: {'center_x': .5, 'center_y': 1}
+            MDFloatLayout:
+                spacing: '1dp'
+                padding: '10dp'
+                size_hint_y: None
+                height: "60dp"
+
+                MDIconButton:
+                    on_press: root.titulo('Conheça os animais')
+                    icon: 'volume-high'
+                    size_hint: None, None
+                    icon_size: '32sp'
+                    theme_text_color: "Custom"
+                    text_color: 0.027, 0.263, 0.533, 1
+                    pos_hint: {'center_x': .15, 'center_y': .5}
+                MDLabel:
+                    size_hint_x: .8
+                    text: 'Conheça os animais'
+                    font_name: "./fonts/Parkinsans-Medium.ttf"
+                    font_size: "24sp"
+                    text_color: 0.027, 0.263, 0.533, 1
+                    theme_text_color: "Custom"
+                    halign: 'center'
+                    valign: 'middle'
+                    pos_hint: {'center_x': .55, 'center_y': .5}
+
+
+        MDGridLayout:
+            cols: 2
+            size_hint_y: .5
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            padding:[dp(15), dp(15), dp(15), dp(35)]
+            spacing: dp(15)
+            MDCard:
+                size_hint: .2, .2
+                ripple_behavior: True
+                pos_hint: {"center_x": .5, "center_y": .5}
+                md_bg_color: 0, 0, 0, 0
+                elevation: 0
+                on_press: root.sons('cachorro')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    Image:
+                        source: '.\imagens\Cachorro.png'
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                        size_hint_x: 1
+                        size_hint_y: 1
+                    BoxLayout:
+                        pos_hint: {'center_x': .5}
+                        orientation: 'horizontal'
+                        padding: [10, 10]
+                        size_hint_y: None
+                        height: "50dp"
+
+                        MDIcon:
+                            pos_hint: {'center_x': .5}
+                            icon: 'volume-high'  # Ícone desejado
+                            size_hint_y: None
+                            color: 0.027, 0.263, 0.533, 1
+                            height: "24dp"  # Ajustando a altura do ícone
+
+                        MDLabel:
+                            pos_hint: {'center_x': .5}
+                            text: "Cachorro"
+                            font_name: "./fonts/Parkinsans-Regular.ttf"  # Caminho para a fonte no projeto
+                            font_size: "17sp"
+                            theme_text_color: "Custom"
+                            text_color: 0.027, 0.263, 0.533, 1
+                            size_hint_x: 1
+                            size_hint_y: None
+                            size: "200dp", "24dp"  # Definindo o tamanho da label
+                            valign: "middle"  # Alinhando o texto no centro verticalmente
+                            halign: 'center'
+            MDCard:
+                size_hint: .2, .2
+                ripple_behavior: True
+                pos_hint: {"center_x": .5, "center_y": .5}
+                md_bg_color: 0, 0, 0, 0
+                elevation: 0
+                on_press: root.sons('gato')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    Image:
+                        source: '.\imagens\Gato.png'
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                        size_hint_x: 1
+                        size_hint_y: 1
+                    BoxLayout:
+                        pos_hint: {'center_x': .5}
+                        orientation: 'horizontal'
+                        padding: [10, 10]  # Espaçamento em torno dos itens
+                        size_hint_y: None
+                        height: "50dp"  # Definindo uma altura fixa para o BoxLayout
+
+                        MDIcon:
+                            pos_hint: {'center_x': .5}
+                            icon: 'volume-high'  # Ícone desejado
+                            size_hint_y: None
+                            color: 0.027, 0.263, 0.533, 1
+                            height: "24dp"  # Ajustando a altura do ícone
+
+                        MDLabel:
+                            pos_hint: {'center_x': .5}
+                            text: "Gato"
+                            font_name: "./fonts/Parkinsans-Regular.ttf"  # Caminho para a fonte no projeto
+                            font_size: "17sp"
+                            theme_text_color: "Custom"
+                            text_color: 0.027, 0.263, 0.533, 1
+                            size_hint_x: 1
+                            size_hint_y: None
+                            size: "200dp", "24dp"  # Definindo o tamanho da label
+                            valign: "middle"  # Alinhando o texto no centro verticalmente
+                            halign: 'center'
+            MDCard:
+                size_hint: .2, .2
+                ripple_behavior: True
+                pos_hint: {"center_x": .5, "center_y": .5}
+                md_bg_color: 0, 0, 0, 0
+                elevation: 0
+                on_press: root.sons('ovelha')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    Image:
+                        source: '.\imagens\ovelha.png'
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                        size_hint_x: 1
+                        size_hint_y: 1
+                    BoxLayout:
+                        pos_hint: {'center_x': .5}
+                        orientation: 'horizontal'
+                        padding: [10, 10]  # Espaçamento em torno dos itens
+                        size_hint_y: None
+                        height: "50dp"  # Definindo uma altura fixa para o BoxLayout
+
+                        MDIcon:
+                            pos_hint: {'center_x': .5}
+                            icon: 'volume-high'  # Ícone desejado
+                            size_hint_y: None
+                            color: 0.027, 0.263, 0.533, 1
+                            height: "24dp"  # Ajustando a altura do ícone
+
+                        MDLabel:
+                            pos_hint: {'center_x': .5}
+                            text: "Ovelha"
+                            font_name: "./fonts/Parkinsans-Regular.ttf"
+                            font_size: "17sp"
+                            theme_text_color: "Custom"
+                            text_color: 0.027, 0.263, 0.533, 1
+                            size_hint_x: 1
+                            size_hint_y: None
+                            size: "200dp", "24dp"
+                            valign: "middle"
+                            halign: 'center'
+            MDCard:
+                size_hint: .2, .2
+                ripple_behavior: True
+                pos_hint: {"center_x": .5, "center_y": .5}
+                md_bg_color: 0, 0, 0, 0
+                elevation: 0
+                on_press: root.sons('vaca')
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    Image:
+                        source: '.\imagens\Cow.jpg'
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                        size_hint_x: 1
+                        size_hint_y: 1
+                    BoxLayout:
+                        pos_hint: {'center_x': .5}
+                        orientation: 'horizontal'
+                        padding: [10, 10]
+                        size_hint_y: None
+                        height: "50dp"
+
+                        MDIcon:
+                            pos_hint: {'center_x': .5}
+                            icon: 'volume-high'  # Ícone desejado
+                            size_hint_y: None
+                            color: 0.027, 0.263, 0.533, 1
+                            height: "24dp"  # Ajustando a altura do ícone
+
+                        MDLabel:
+                            pos_hint: {'center_x': .5}
+                            text: "Vaca"
+                            font_name: "./fonts/Parkinsans-Regular.ttf"  # Caminho para a fonte no projeto
+                            font_size: "17sp"
+                            theme_text_color: "Custom"
+                            text_color: 0.027, 0.263, 0.533, 1
+                            size_hint_x: 1
+                            size_hint_y: None
+                            size: "200dp", "24dp"  # Definindo o tamanho da label
+                            valign: "middle"  # Alinhando o texto no centro verticalmente
+                            halign: 'center'
+        MDBoxLayout:
+            size_hint_y: .10
+            MDTextButton:
+                text: 'Começar'
+                font_name: "./fonts/Parkinsans-Regular.ttf"
+                pos_hint: {'center_x': .5, 'center_y': .8}
+                size_hint_x: 0.7
+                theme_text_color: 'Custom'
+                text_color: 0.027, 0.263, 0.533, 1
+                font_size: "32sp"
+                on_press: app.mudar_tela('asso_jogo')
+
+<Associacao_jogo>:
+    MDBoxLayout:
+        padding: '20sp'
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: 0.678, 0.847, 1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        MDTopAppBar:
+            title: ""
+            left_action_items: [["arrow-left", lambda x: app.mudar_tela('associacao')]]
+            md_bg_color: 0.678, 0.847, 1, 1
+            elevation: 0
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: .2
+            Image:
+                source: '.\imagens\logo.png'
+                size_hint: None, None
+                size: "150dp", "75dp"
+                pos_hint: {'center_x': .5, 'center_y': 1}
+            MDFloatLayout:
+                spacing: '1dp'
+                padding: '10dp'
+                size_hint_y: None
+                height: "20dp"
+
+                MDIconButton:
+                    on_press: root.titulo1('Que animal é este?')
+                    icon: 'volume-high'
+                    size_hint: None, None
+                    icon_size: '32sp'
+                    theme_text_color: "Custom"
+                    text_color: 0.027, 0.263, 0.533, 1
+                    pos_hint: {'center_x': .12, 'center_y': .2}
+                MDLabel:
+                    size_hint_x: .8
+                    text: 'Que animal é este?'
+                    font_name: "./fonts/Parkinsans-Medium.ttf"  # Caminho para a fonte no projeto
+                    font_size: "24sp"
+                    text_color: 0.027, 0.263, 0.533, 1
+                    theme_text_color: "Custom"
+                    halign: 'center'
+                    valign: 'middle'
+                    pos_hint: {'center_x': .55, 'center_y': .2}
+        MDBoxLayout:
+            size_hint_y: .2
+            MDFloatLayout:
+                spacing: '1dp'
+                padding: '10dp'
+                size_hint_y: None
+                height: "40dp"
+
+                MDIconButton:
+                    on_press: root.animal_certo()
+                    icon: 'play'
+                    size_hint: None, None
+                    icon_size: '32sp'
+                    theme_text_color: "Custom"
+                    text_color: 0.027, 0.263, 0.533, 1
+                    pos_hint: {'center_x': .3, 'center_y': .5}
+                MDLabel:
+                    id: audio
+                    size_hint_x: .8
+                    text: ''
+                    font_name: "./fonts/Parkinsans-Medium.ttf"
+                    font_size: "24sp"
+                    text_color: 0.027, 0.263, 0.533, 1
+                    theme_text_color: "Custom"
+                    halign: 'center'
+                    valign: 'middle'
+                    pos_hint: {'center_x': .55, 'center_y': .5}
+        MDBoxLayout:
+            id: associacao_layout
+
+
+<Coordenacao_motora>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: 0.678, 0.847, 1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        MDTopAppBar:
+            title: ""
+            left_action_items: [["arrow-left", lambda x: app.mudar_tela('inicio')]]
+            md_bg_color: 0.678, 0.847, 1, 1
+            elevation: 0
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: .15
+            Image:
+                source: '.\imagens\logo.png'
+                size_hint: None, None
+                size: "150dp", "75dp"
+                pos_hint: {'center_x': .5, 'center_y': 1}
+            MDFloatLayout:
+                spacing: '1dp'
+                padding: '10dp'
+                size_hint_y: None
+                height: "60dp"
+
+                MDIconButton:
+                    on_press: root.titulo('Siga o tracejado')
+                    icon: 'volume-high'
+                    size_hint: None, None
+                    icon_size: '32sp'
+                    theme_text_color: "Custom"
+                    text_color: 0.027, 0.263, 0.533, 1
+                    pos_hint: {'center_x': .2, 'center_y': .5}
+                MDLabel:
+                    size_hint_x: .8
+                    text: 'Siga o tracejado!'
+                    font_name: "./fonts/Parkinsans-Medium.ttf"  # Caminho para a fonte no projeto
+                    font_size: "24sp"
+                    text_color: 0.027, 0.263, 0.533, 1
+                    theme_text_color: "Custom"
+                    halign: 'center'
+                    valign: 'middle'
+                    pos_hint: {'center_x': .55, 'center_y': .5}
+        MDFloatLayout:
+            id: cord_layout
+            Image:
+                source: '.\imagens\eagle.png'
+                size_hint: None, None
+                size: "120dp", "60dp"
+                pos_hint: {'center_x': .45, 'center_y': .92}
+
+            Image:
+                source: '.\imagens\chegada.png'
+                size_hint: None, None
+                size: "100dp", "50dp"
+                pos_hint: {'center_x': .5, 'center_y': .5}
+
+<Emocoes>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: 0.678, 0.847, 1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        MDTopAppBar:
+            title: ""
+            left_action_items: [["arrow-left", lambda x: app.mudar_tela('inicio')]]
+            md_bg_color: 0.678, 0.847, 1, 1
+            elevation: 0
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: .2
+            Image:
+                source: '.\imagens\logo.png'
+                size_hint: None, None
+                size: "150dp", "75dp"
+                pos_hint: {'center_x': .5, 'center_y': 1}
+            MDFloatLayout:
+                spacing: '1dp'
+                padding: '10dp'
+                size_hint_y: None
+                height: "20dp"
+
+                MDIconButton:
+                    on_press: root.titulo('Identifique as emoções')
+                    icon: 'volume-high'
+                    size_hint: None, None
+                    icon_size: '32sp'
+                    theme_text_color: "Custom"
+                    text_color: 0.027, 0.263, 0.533, 1
+                    pos_hint: {'center_x': .12, 'center_y': .5}
+                MDLabel:
+                    size_hint_x: .8
+                    text: 'Identifique as emoções'
+                    font_name: "./fonts/Parkinsans-Medium.ttf"  # Caminho para a fonte no projeto
+                    font_size: "24sp"
+                    text_color: 0.027, 0.263, 0.533, 1
+                    theme_text_color: "Custom"
+                    halign: 'center'
+                    valign: 'middle'
+                    pos_hint: {'center_x': .55, 'center_y': .5}
+        MDLabel:
+            id: emocao
+            text: ''
+            font_name: "./fonts/Parkinsans-Regular.ttf"
+            font_size: "24sp"
+            halign: 'center'
+            valign: 'middle'
+            pos_hint: {'center_x': .5, 'center_y': .4}
+            size_hint_y: None
+        MDBoxLayout:
+            id: emocoes_layout
+
+        MDFloatLayout:
+            MDLabel:
+                padding: [20, 10]
+                id: texto
+                halign: 'center'
+                font_name: "./fonts/Parkinsans-Regular.ttf"
+                font_size: "14sp"
+                text: ''
+                pos_hint: {'center_x': .5, 'center_y': .5}
